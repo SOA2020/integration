@@ -1,7 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    faraday (1.2.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     multi_json (1.15.0)
+    multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     rack (2.2.3)
@@ -30,6 +34,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  faraday (~> 1.2.0)
   rack-cors (~> 1.1.1)
   rake (~> 13.0.1)
   sinatra (~> 2.1.0)

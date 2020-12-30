@@ -9,6 +9,7 @@ gem 'rake', '~> 13.0.1'
 gem 'rack-cors', '~> 1.1.1', require: 'rack/cors'
 gem 'sinatra', '~> 2.1.0', require: 'sinatra/base'
 gem 'sinatra-contrib'
+gem 'faraday', '~> 1.2.0'
 
 # Gems for misc
 gem 'yajl-ruby', require: 'yajl'

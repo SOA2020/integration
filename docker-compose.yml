@@ -1,0 +1,8 @@
+version: '3'
+services:
+  integration:
+    build:
+      context: .
+    ports:
+      - 8233:8233
+    environment: 

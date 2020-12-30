@@ -3,6 +3,9 @@
 require 'bundler'
 Bundler.require
 require 'logger'
+require 'json'
+require 'uri'
+require 'faraday'
 
 Dir[File.dirname(__FILE__) + '/routes/*.rb'].sort.each { |file| require file }
 require './app/errors/runtime_error'

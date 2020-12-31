@@ -17,7 +17,7 @@ USER_ROUTE = proc do
 
     if register_resp.status == 404
       raise NotFoundError.new('Registery', 'NotFound')
-    elsif register_resp.status > 400
+    elsif register_resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -40,7 +40,7 @@ USER_ROUTE = proc do
 
     if token_coin_resp.status == 404
       raise NotFoundError.new('Token Coin', 'NotFound')
-    elsif token_coin_resp.status > 400
+    elsif token_coin_resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -60,7 +60,7 @@ USER_ROUTE = proc do
 
     if resp.status == 404
       raise NotFoundError.new('User', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -81,7 +81,7 @@ USER_ROUTE = proc do
       raise UnauthorizedError, 'UnauthorizedError'
     elsif resp.status == 404
       raise NotFoundError.new('Profile', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -104,7 +104,7 @@ USER_ROUTE = proc do
       raise UnauthorizedError, 'UnauthorizedError'
     elsif resp.status == 404
       raise NotFoundError.new('Profiles', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -132,7 +132,7 @@ USER_ROUTE = proc do
       raise UnauthorizedError, 'UnauthorizedError'
     elsif resp.status == 404
       raise NotFoundError.new('Profile', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -156,7 +156,7 @@ USER_ROUTE = proc do
       raise UnauthorizedError, 'UnauthorizedError'
     elsif resp.status == 404
       raise NotFoundError.new('Profile', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -182,7 +182,7 @@ USER_ROUTE = proc do
       raise UnauthorizedError, 'UnauthorizedError'
     elsif resp.status == 404
       raise NotFoundError.new('Delivery Infos', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -210,7 +210,7 @@ USER_ROUTE = proc do
       raise UnauthorizedError, 'UnauthorizedError'
     elsif resp.status == 404
       raise NotFoundError.new('Delivery Info', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -233,7 +233,7 @@ USER_ROUTE = proc do
       raise UnauthorizedError, 'UnauthorizedError'
     elsif resp.status == 404
       raise NotFoundError.new('Delivery Infos', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 
@@ -254,7 +254,7 @@ USER_ROUTE = proc do
       raise UnauthorizedError, 'UnauthorizedError'
     elsif resp.status == 404
       raise NotFoundError.new('Delivery Info', 'NotFound')
-    elsif resp.status > 400
+    elsif resp.status >= 400
       raise BadRequestError, 'BadRequest'
     end
 

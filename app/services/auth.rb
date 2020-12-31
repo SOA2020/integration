@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Auth
   def self.auth!(uid, token)
     url = URI("#{USER_SERVICE}/user/#{uid}")
@@ -9,6 +11,8 @@ module Auth
     end
 
     raise UnauthorizedError, 'UnauthorizedError' unless resp.status < 400
+
+    JSON.parse(resp.body)
   end
 
   def self.admin!(uid, token)
@@ -24,5 +28,7 @@ module Auth
 
     admin = JSON.parse(resp.body)['isAdmin'].to_s
     raise UnauthorizedError, 'UnauthorizedError' unless admin == 'true'
+
+    JSON.parse(resp.body)
   end
 end

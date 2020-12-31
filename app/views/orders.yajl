@@ -1,0 +1,16 @@
+json = {
+  count: count,
+  pgNum: page,
+  pgSize: size,
+  orders: orders.map do |order|
+    {
+      orderId: order.orderId,
+      userId: order.userId,
+      commodity: order.commodity,
+      timeStamp: order.timeStamp,
+      sendStatus: order.sendStatus,
+      receiveStatus: order.receiveStatus,
+      delivery: delivery
+    }
+  end
+}

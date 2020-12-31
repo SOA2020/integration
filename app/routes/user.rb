@@ -163,7 +163,7 @@ USER_ROUTE = proc do
     resp.body
   end
 
-  post '/:id/delivery_infos' do |id|
+  post '/:id/deliveryInfos' do |id|
     req = JSON.parse(request.body.read)
     token = request.env['HTTP_TOKEN'].to_s
     url = URI("#{USER_SERVICE}/user/#{id}/delivery_infos")
@@ -189,7 +189,7 @@ USER_ROUTE = proc do
     resp.body
   end
 
-  put '/:id/delivery_infos/:info_id' do |id, info_id|
+  put '/:id/deliveryInfos/:info_id' do |id, info_id|
     req = JSON.parse(request.body.read)
     token = request.env['HTTP_TOKEN'].to_s
     url = URI("#{USER_SERVICE}/user/#{id}/delivery_infos/#{info_id}")
@@ -217,7 +217,7 @@ USER_ROUTE = proc do
     resp.body
   end
 
-  get '/:id/delivery_infos' do |id|
+  get '/:id/deliveryInfos' do |id|
     token = request.env['HTTP_TOKEN'].to_s
     page = (params[:page] || 1).to_i
     size = (params[:size] || 10).to_i
@@ -240,7 +240,7 @@ USER_ROUTE = proc do
     resp.body
   end
 
-  delete '/:id/delivery_infos/:info_id' do |id, info_id|
+  delete '/:id/deliveryInfos/:info_id' do |id, info_id|
     token = request.env['HTTP_TOKEN'].to_s
     url = URI("#{USER_SERVICE}/user/#{id}/delivery_infos/#{info_id}")
 

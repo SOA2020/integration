@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 COMMENT_ROUTE = proc do
   get '/:id/comments' do |id|
     page = (params[:page] || 1).to_i
@@ -25,7 +27,7 @@ COMMENT_ROUTE = proc do
     req = JSON.parse(request.body.read)
     token = request.env['HTTP_TOKEN'].to_s
     uid = req['userId']
-    Auth::auth!(uid, token)
+    Auth.auth!(uid, token)
     url = URI("#{COMMENT_SERVICE}/#{id}/comments")
 
     json = { userId: req['userId'].to_s, content: req['content'].to_s }.to_json
@@ -49,7 +51,7 @@ COMMENT_ROUTE = proc do
   delete '/:id/comments/:comment_id' do |id, comment_id|
     token = request.env['HTTP_TOKEN'].to_s
     uid = params['userId']
-    Auth::admin!(uid, token)
+    Auth.admin!(uid, token)
     url = URI("#{COMMENT_SERVICE}/#{id}/comments/#{comment_id}")
 
     begin

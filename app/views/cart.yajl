@@ -1,0 +1,18 @@
+json = {
+  count: count,
+  pgNum: page,
+  pgSize: size,
+  commodities: commodities.map do |comm|
+    {
+      commodityId: comm['commodityId'],
+      commodityName: comm['commodityName'],
+      commodityPrice: comm['commodityPrice'],
+      commodityColor: comm['commodityColor'],
+      commodityImage: comm['commodityImage'],
+      commoditySpecification: comm['commoditySpecification'],
+      commodityInventory: comm['commodityInventory'],
+      commodityType: comm['commodityType'],
+      num: comm['num']
+    }
+  end
+}

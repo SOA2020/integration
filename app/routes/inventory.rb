@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 INVENTORY_ROUTE = proc do
   get '/commodity' do
     page_number = (params['pageNumber'] || 1).to_i
@@ -29,7 +31,7 @@ INVENTORY_ROUTE = proc do
     req = JSON.parse(request.body.read)
     token = request.env['HTTP_TOKEN'].to_s
     uid = req['userId']
-    Auth::admin!(uid, token)
+    Auth.admin!(uid, token)
 
     url = URI("#{INVENTORY_SERVICE}/commodity")
 
@@ -40,9 +42,8 @@ INVENTORY_ROUTE = proc do
              commoditySpecification: req['commoditySpecification'].to_s,
              commodityInventory: req['commodityInventory'].to_i,
              commodityType: req['commodityType'].to_i,
-             introduction: req['introduction'].to_s
-             # Not my code
-            }.to_json
+             introduction: req['introduction'].to_s }.to_json
+    # Not my code.to_json
 
     begin
       resp = Faraday.post(url, json, {'Content-Type' => 'application/json'})
@@ -84,7 +85,7 @@ INVENTORY_ROUTE = proc do
   delete '/commodity/:id' do |id|
     token = request.env['HTTP_TOKEN'].to_s
     uid = params['userId']
-    Auth::admin!(uid, token)
+    Auth.admin!(uid, token)
 
     url = URI("#{INVENTORY_SERVICE}/commodity/#{id}")
 
@@ -109,7 +110,7 @@ INVENTORY_ROUTE = proc do
     req = JSON.parse(request.body.read)
     token = request.env['HTTP_TOKEN'].to_s
     uid = req['userId']
-    Auth::admin!(uid, token)
+    Auth.admin!(uid, token)
 
     url = URI("#{INVENTORY_SERVICE}/commodity/#{id}")
 
@@ -120,9 +121,8 @@ INVENTORY_ROUTE = proc do
              commoditySpecification: req['commoditySpecification'].to_s,
              commodityInventory: req['commodityInventory'].to_i,
              commodityType: req['commodityType'].to_i,
-             introduction: req['introduction'].to_s
-             # Not my code
-            }.to_json
+             introduction: req['introduction'].to_s}
+    # Not my code.to_json
 
     begin
       resp = Faraday.put(url, json, {'Content-Type' => 'application/json'})

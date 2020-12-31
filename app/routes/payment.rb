@@ -30,7 +30,7 @@ PAYMENT_ROUTE = proc do
     req = JSON.parse(request.body.read)
     token = request.env['HTTP_TOKEN'].to_s
     uid = req['userId']
-    Auth::auth!(uid, token)
+    Auth::admin!(uid, token)
 
     json = { userId: req['userId'], tokenCoin: req['tokenCoin'] }.to_json
     url = URI("#{PAYMENT_SERVICE}/tokencoin")

@@ -18,6 +18,9 @@ class Route < Sinatra::Base
   namespace '/user', &USER_ROUTE
   namespace '/payment', &PAYMENT_ROUTE
   namespace '/inventory', &INVENTORY_ROUTE
+  namespace '/order', &ORDER_ROUTE
+  namespace '/cart', &CART_ROUTE
+  namespace '/commodity', &COMMENT_ROUTE
 
   error 500 do |error|
     [

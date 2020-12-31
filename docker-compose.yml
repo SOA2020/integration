@@ -7,5 +7,8 @@ services:
       - 8233:8233
     environment: 
       - USER_SERVICE=http://10.20.30.161:9000
+      - COMMENT_SERVICE=http://10.20.30.161:9001
       - PAYMENT_SERVICE=http://10.20.30.161:9002
       - INVENTORY_SERVICE=http://10.20.30.161:9003
+      - ORDER_SERVICE=http://10.20.30.161:9004
+      - CART_SERVICE=http://10.20.30.161:9005

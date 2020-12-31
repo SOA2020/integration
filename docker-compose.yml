@@ -8,3 +8,4 @@ services:
     environment: 
       - USER_SERVICE=http://10.20.30.161:9000
       - PAYMENT_SERVICE=http://10.20.30.161:9002
+      - INVENTORY_SERVICE=http://10.20.30.161:9003

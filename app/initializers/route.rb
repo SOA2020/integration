@@ -17,6 +17,7 @@ class Route < Sinatra::Base
   namespace '/', &ROOT_ROUTE
   namespace '/user', &USER_ROUTE
   namespace '/payment', &PAYMENT_ROUTE
+  namespace '/inventory', &INVENTORY_ROUTE
 
   error 500 do |error|
     [

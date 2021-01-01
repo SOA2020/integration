@@ -7,12 +7,8 @@ ORDER_ROUTE = proc do
     token = request.env['HTTP_TOKEN'].to_s
     user = Auth.auth!(uid, token)
 
-    if user['isAdmin'].to_s == 'true'
-      send_status = params['sendStatus'].to_s
-      order_url = URI("#{ORDER_SERVICE}?userId=#{uid}&pageNumber=#{page}&sendStatus=#{send_status}")
-    else
-      order_url = URI("#{ORDER_SERVICE}?userId=#{uid}&pageNumber=#{page}")
-    end
+    send_status = params['sendStatus']
+    order_url = URI("#{ORDER_SERVICE}/order?userId=#{uid}&pageNumber=#{page}&sendStatus=#{send_status}")
 
     begin
       order_resp = Faraday.get(order_url)
@@ -30,12 +26,12 @@ ORDER_ROUTE = proc do
 
     orders = JSON.parse(order_resp.body)
     orders['commodities'].each do |order|
-      delivery_id = order['orderId']
+      delivery_id = order['deliveryId']
       uid = order['userId']
-      delivery_url = URI("#{USER_ROUTE}/#{uid}/delivery_infos/#{delivery_id}")
+      delivery_url = URI("#{USER_SERVICE}/user/#{uid}/delivery_infos/#{delivery_id}")
 
       begin
-        delivery_resp = Faraday.get(delivery_url)
+        delivery_resp = Faraday.get(delivery_url, nil, {'token' => token})
       rescue StandardError => e
         puts e.message.to_s
       end

@@ -4,13 +4,13 @@ json = {
   pgSize: size,
   orders: orders.map do |order|
     {
-      orderId: order.orderId,
-      userId: order.userId,
-      commodity: order.commodity,
-      timeStamp: order.timeStamp,
-      sendStatus: order.sendStatus,
-      receiveStatus: order.receiveStatus,
-      delivery: delivery
+      orderId: order['orderId'],
+      userId: order['userId'],
+      commodity: order['commodity'],
+      timeStamp: order['timeStamp'],
+      sendStatus: order['sendStatus'],
+      receiveStatus: order['receiveStatus'],
+      delivery: order['delivery']
     }
   end
 }

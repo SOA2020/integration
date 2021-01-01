@@ -142,6 +142,24 @@ INVENTORY_ROUTE = proc do
   end
 
   post '/commodity/search' do
-    # TODO: FIXME
+    req = JSON.parse(request.body.read)
+    url = URI("#{INVENTORY_SERVICE}/commodity/search")
+    json = { keyWords: req['keyWords'] }.to_json
+
+    begin
+      resp = Faraday.post(url, json, {'Content-Type' => 'application/json'})
+    rescue StandardError => e
+      puts e.message.to_s
+    end
+
+    if resp.status == 401
+      raise UnauthorizedError, 'UnauthorizedError'
+    elsif resp.status == 404
+      raise NotFoundError.new('Inventory', 'NotFound')
+    elsif resp.status >= 400
+      raise BadRequestError, 'BadRequest'
+    end
+
+    resp.body
   end
 end

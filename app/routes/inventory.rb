@@ -121,8 +121,7 @@ INVENTORY_ROUTE = proc do
              commoditySpecification: req['commoditySpecification'].to_s,
              commodityInventory: req['commodityInventory'].to_i,
              commodityType: req['commodityType'].to_i,
-             introduction: req['introduction'].to_s}
-    # Not my code.to_json
+             introduction: req['introduction'].to_s}.to_json
 
     begin
       resp = Faraday.put(url, json, {'Content-Type' => 'application/json'})

@@ -45,6 +45,30 @@ ORDER_ROUTE = proc do
       end
 
       order['delivery'] = JSON.parse(delivery_resp.body)
+
+      commodities = []
+      order['commodity'].each do |commodity|
+        commodity_id = commodity['commodityId']
+        commodity_url = URI("#{INVENTORY_SERVICE}/commodity/#{commodity_id}")
+      
+        begin
+          resp = Faraday.get(commodity_url)
+        rescue StandardError => e
+          puts e.message.to_s
+        end
+
+        if resp.status == 401
+          raise UnauthorizedError, 'UnauthorizedError'
+        elsif resp.status == 404
+          raise NotFoundError.new('Commodity', 'NotFound')
+        elsif resp.status >= 400
+          raise BadRequestError, 'BadRequest'
+        end
+
+        commodities.push(JSON.parse(resp.body))
+      end
+
+      order['commodities'] = commodities
     end
 
     yajl :orders, locals: {count: orders['count'], page: orders['pgNum'], size: orders['pgSize'], orders: orders['commodities']}

@@ -6,7 +6,7 @@ json = {
     {
       orderId: order['orderId'],
       userId: order['userId'],
-      commodity: order['commodity'],
+      commodity: order['commodities'],
       timeStamp: order['timeStamp'],
       sendStatus: order['sendStatus'],
       receiveStatus: order['receiveStatus'],

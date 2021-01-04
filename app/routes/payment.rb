@@ -120,7 +120,7 @@ PAYMENT_ROUTE = proc do
   put '/tokenCoin' do
     req = JSON.parse(request.body.read)
     token = request.env['HTTP_TOKEN'].to_s
-    uid = req['userId']
+    uid = req['adminId']
     Auth.admin!(uid, token)
 
     json = { userId: req['userId'], tokenCoin: req['tokenCoin'] }.to_json

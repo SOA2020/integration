@@ -43,7 +43,7 @@ CART_ROUTE = proc do
 
       commodity = JSON.parse(comm_resp.body)
       comm['commodityName'] = commodity['commodityName'].to_s
-      comm['commodityPrice'] = commodity['commodityPirce'].to_i
+      comm['commodityPrice'] = commodity['commodityPrice'].to_i
       comm['commodityColor'] = commodity['commodityColor'].to_s
       comm['commodityImage'] = commodity['commodityImage'].to_s
       comm['commoditySpecification'] = commodity['commoditySpecification'].to_s
